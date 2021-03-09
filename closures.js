@@ -1,18 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+"use strict";
+//make a function for sum sequence of numbers with chaining
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>closures</title>
-    <script src="closure.js" defer></script>
-</head>
+const sum = function (a) {
+  return function result(b) {
+    if (b === undefined) {
+      return a;
+    }
+    a += b;
+    return result;
+  };
+};
 
-<body>
-    <h1>closures tasks
-
-    </h1>
-</body>
-
-</html>
+const result = sum(5)(3)(8)(12)();
+console.log(result);
