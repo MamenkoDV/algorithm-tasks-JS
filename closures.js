@@ -10,6 +10,5 @@ const sum = function (a) {
     return result;
   };
 };
-
-const result = sum(5)(3)(8)(12)();
+const result = sum(5)(44)();
 console.log(result);
