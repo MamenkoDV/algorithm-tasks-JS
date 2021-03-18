@@ -134,3 +134,41 @@
 // }
 
 // console.log(divCon([9, 3]));
+
+// The goal of this exercise is to convert a string to a new string where each character in the new string is "(" if that character appears only once in the original string, or ")" if that character appears more than once in the original string. Ignore capitalization when determining if a character is a duplicate.
+
+// Examples
+// "din"      =>  "((("
+// "recede"   =>  "()()()"
+// "Success"  =>  ")())())"
+// "(( @"     =>  "))(("
+// function duplicateEncode(word) {
+//   let duplicated = [];
+//   return word.split("").map((item) => {
+//     if (duplicated.includes(item)) {
+//       return ")";
+//     } else {
+//       duplicated.push(item);
+//       return "(";
+//     }
+//   });
+// }
+// console.log(duplicateEncode("recede"));
+
+// Complete the function that returns an array of length n, starting with the given number x and the squares of the previous number. If n is negative or zero, return an empty array/list.
+
+// Examples
+// 2, 5  -->  [2, 4, 16, 256, 65536]
+// 3, 3  -->  [3, 9, 81]
+
+// function squares(x, n) {
+//   if (n <= 0) return [];
+//   let result = Array(n).fill(n);
+//   return result.map((item, index) => (index === 0 ? item : (item = item ** 2)));
+//   //   for (i = 0; i < n; i++) {
+//   //     result.push(x);
+//   //     x = x ** 2;
+//   //   }
+//   //   return result;
+// }
+// console.log(squares(2, 5));
