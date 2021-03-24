@@ -139,22 +139,22 @@
 
 // Examples
 // "din"      =>  "((("
-// "recede"   =>  "()()()"
+// "recede"   =>  "()())("
 // "Success"  =>  ")())())"
 // "(( @"     =>  "))(("
+// fucntion reducer (acc, currentvalue,index,arr) {
+//  arr.map(item => item.)
+
+// }
 // function duplicateEncode(word) {
-//   let duplicated = [];
-//   return word.split("").map((item) => {
-//     if (duplicated.includes(item)) {
-//       return ")";
-//     } else {
-//       duplicated.push(item);
-//       return "(";
-//     }
-//   });
+//   let copy = [...word];
+//   let result = word
+//     .toLowerCase()
+//     .split("")
+//     .reduce(reducer,[])
+//   return result;
 // }
 // console.log(duplicateEncode("recede"));
-
 // Complete the function that returns an array of length n, starting with the given number x and the squares of the previous number. If n is negative or zero, return an empty array/list.
 
 // Examples
@@ -172,3 +172,19 @@
 //   //   return result;
 // }
 // console.log(squares(2, 5));
+function validPass(password) {
+  const criteria1 = /^\w{4,20}$/.test(password);
+  const criteria2 = /\d/.test(password);
+  const criteria3 = /[a-zA-Z]/.test(password);
+  return criteria1 && criteria2 && criteria3 ? "VALID" : "INVALID";
+}
+console.log(validPass("Username123"), "Username123");
+console.log(validPass("Username"), "Username");
+console.log(validPass("1Username"), "1Username");
+console.log(validPass("123"), "123");
+console.log(validPass("a12"), "a12");
+console.log(validPass("Username123!"), "Username123!");
+console.log(
+  validPass("ThisPasswordIsTooLong1234"),
+  "ThisPasswordIsTooLong1234"
+);
