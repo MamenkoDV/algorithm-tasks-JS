@@ -98,40 +98,34 @@
 
 // returns "Caught!" because the cat can catch the mouse in 4 moves
 
-// function catMouse(map, moves) {
-//   if (!map.includes("m") || !map.includes("m")) {
-//     return "boring without two animals";
-//   }
-//   counter = 0;
-//   let line = 0;
-//   let matrix = map.;
-//   let line = matrix.indexOf("/n");
-//   console.log(line);
-//   const mousePosition = map.lastIndexOf("m");
-//   const catPosition = map.lastIndexOf("C");
-//   let range = Math.abs(catPosition - mousePosition);
-//   return getLine(map, mousePosition, catPosition);
-//   if (moves <= 2) {
-//   }
-//   return matrix;
-// }
-// let ree = `..C......
-// .........
-// ....m....`;
-// console.log(catMouse(ree, 2));
-// function getLine(map, mousePosition, catPosition) {
-//   for (let index = 0; index < map.length; index++) {
-//     (map.length / index) % 2 === 0 ?  index;
+function catMouse(map, moves) {
+  if (!map.includes("m") || !map.includes("C")) {
+    return "boring without two animals";
+  }
+  let lines = map.split("\n");
+  catLine = lines.filter((string) => {
+    return string.indexOf("C") >= 0;
+  });
+  mouseLine = lines.filter((string) => {
+    return string.indexOf("m") >= 0;
+  });
+  catPosition = +catLine.toString().indexOf("C");
 
-//   }
-//   let lines = (map.length / lines) % 2;
-//   return lines;
-// let mouseLine = parseInt(map.length / (mousePosition % 9));
-// let catLine = parseInt(map.length / (catPosition % 9));
-// console.log(catLine, mouseLine);
-// return [mouseLine, catLine];
-// }
-// console.log(getLine(ree, 4, 29));
+  mousePosition = +mouseLine.toString().indexOf("m");
+
+  let mouseLineNumber = +lines.indexOf(mouseLine.toString());
+  let catLineNumber = +lines.indexOf(catLine.toString());
+  return Math.abs(catPosition - mousePosition) +
+    Math.abs(catLineNumber - mouseLineNumber) <=
+    moves
+    ? "Caught!"
+    : "Escaped!";
+}
+const ree = `..C......
+m........
+.........`;
+console.log(catMouse(ree, 6));
+
 // const FilterString = function (value) {
 //   return +value.match(/\d/g).join("");
 // };
@@ -160,17 +154,17 @@
 // "Success"  =>  ")())())"
 // "(( @"     =>  "))(("
 
-function duplicateEncode(word) {
-  let duplicate = [...word.toLowerCase().split("")];
-  return duplicate
-    .map((element) => {
-      return duplicate.indexOf(element) === duplicate.lastIndexOf(element)
-        ? "("
-        : ")";
-    })
-    .join("");
-}
-console.log(duplicateEncode("recede"));
+// function duplicateEncode(word) {
+//   let duplicate = [...word.toLowerCase().split("")];
+//   return duplicate
+//     .map((element) => {
+//       return duplicate.indexOf(element) === duplicate.lastIndexOf(element)
+// /? "("
+//         : ")";
+//     })
+//     .join("");
+// }
+// console.log(duplicateEncode("recede"));
 
 // Complete the function that returns an array of length n, starting with the given number x and the squares of the previous number. If n is negative or zero, return an empty array/list.
 
@@ -204,4 +198,4 @@ console.log(duplicateEncode("recede"));
 // console.log(
 //   validPass("ThisPasswordIsTooLong1234"),
 //   "ThisPasswordIsTooLong1234"
-// );
+//);
