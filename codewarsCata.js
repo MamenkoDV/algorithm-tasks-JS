@@ -102,19 +102,36 @@
 //   if (!map.includes("m") || !map.includes("m")) {
 //     return "boring without two animals";
 //   }
+//   counter = 0;
+//   let line = 0;
+//   let matrix = map.;
+//   let line = matrix.indexOf("/n");
+//   console.log(line);
 //   const mousePosition = map.lastIndexOf("m");
 //   const catPosition = map.lastIndexOf("C");
 //   let range = Math.abs(catPosition - mousePosition);
-//   console.log(mousePosition, catPosition, range);
+//   return getLine(map, mousePosition, catPosition);
 //   if (moves <= 2) {
-//    (range - (catPosition+moves * 9) >= mousePosition  ? "Caught" : "Escaped"
-////   }else if(moves>2) {
+//   }
+//   return matrix;
+// }
+// let ree = `..C......
+// .........
+// ....m....`;
+// console.log(catMouse(ree, 2));
+// function getLine(map, mousePosition, catPosition) {
+//   for (let index = 0; index < map.length; index++) {
+//     (map.length / index) % 2 === 0 ?  index;
 
 //   }
+//   let lines = (map.length / lines) % 2;
+//   return lines;
+// let mouseLine = parseInt(map.length / (mousePosition % 9));
+// let catLine = parseInt(map.length / (catPosition % 9));
+// console.log(catLine, mouseLine);
+// return [mouseLine, catLine];
 // }
-// let ree = `..m.......................C`;
-// catMouse(ree, 2);
-
+// console.log(getLine(ree, 4, 29));
 // const FilterString = function (value) {
 //   return +value.match(/\d/g).join("");
 // };
@@ -142,19 +159,19 @@
 // "recede"   =>  "()())("
 // "Success"  =>  ")())())"
 // "(( @"     =>  "))(("
-// fucntion reducer (acc, currentvalue,index,arr) {
-//  arr.map(item => item.)
 
-// }
-// function duplicateEncode(word) {
-//   let copy = [...word];
-//   let result = word
-//     .toLowerCase()
-//     .split("")
-//     .reduce(reducer,[])
-//   return result;
-// }
-// console.log(duplicateEncode("recede"));
+function duplicateEncode(word) {
+  let duplicate = [...word.toLowerCase().split("")];
+  return duplicate
+    .map((element) => {
+      return duplicate.indexOf(element) === duplicate.lastIndexOf(element)
+        ? "("
+        : ")";
+    })
+    .join("");
+}
+console.log(duplicateEncode("recede"));
+
 // Complete the function that returns an array of length n, starting with the given number x and the squares of the previous number. If n is negative or zero, return an empty array/list.
 
 // Examples
@@ -172,19 +189,19 @@
 //   //   return result;
 // }
 // console.log(squares(2, 5));
-function validPass(password) {
-  const criteria1 = /^\w{4,20}$/.test(password);
-  const criteria2 = /\d/.test(password);
-  const criteria3 = /[a-zA-Z]/.test(password);
-  return criteria1 && criteria2 && criteria3 ? "VALID" : "INVALID";
-}
-console.log(validPass("Username123"), "Username123");
-console.log(validPass("Username"), "Username");
-console.log(validPass("1Username"), "1Username");
-console.log(validPass("123"), "123");
-console.log(validPass("a12"), "a12");
-console.log(validPass("Username123!"), "Username123!");
-console.log(
-  validPass("ThisPasswordIsTooLong1234"),
-  "ThisPasswordIsTooLong1234"
-);
+// function validPass(password) {
+//   const criteria1 = /^\w{4,20}$/.test(password);
+//   const criteria2 = /\d/.test(password);
+//   const criteria3 = /[a-zA-Z]/.test(password);
+//   return criteria1 && criteria2 && criteria3 ? "VALID" : "INVALID";
+// }
+// console.log(validPass("Username123"), "Username123");
+// console.log(validPass("Username"), "Username");
+// console.log(validPass("1Username"), "1Username");
+// console.log(validPass("123"), "123");
+// console.log(validPass("a12"), "a12");
+// console.log(validPass("Username123!"), "Username123!");
+// console.log(
+//   validPass("ThisPasswordIsTooLong1234"),
+//   "ThisPasswordIsTooLong1234"
+// );
