@@ -209,16 +209,38 @@
 
 // [160, 3, 1719, 19, 11, 13, -21]
 // Should return: 160 (the only even number)
-function findOutlier(integers) {
-  let allEven = integers.filter((item) => item % 2 === 0);
-  let allOdd = integers.filter((item) => item % 2 !== 0);
+// function findOutlier(integers) {
+//   let allEven = integers.filter((item) => item % 2 === 0);
+//   let allOdd = integers.filter((item) => item % 2 !== 0);
 
-  return allEven.length === 1 ? allEven[0] : allOdd[0];
-  // if (!allEven) {
-  //   return integers.filter((item) => item % 2 !== 0);
-  // } else {
-  //   return integers.filter((item) => item % 2 === 0);
-  // }
+// }
+// let integer = [2, 4, 0, 100, 4, 11, 2602, 36];
+// console.log(findOutlier([2, 4, 0, 100, 4, 11, 2602, 36]));
+
+// Create the function fridayTheThirteenths
+// that accepts a start year and an end year (inclusive), and returns all of the dates where the 13th of a month lands on a Friday in the given range of year(s).
+
+// The return value should be a string where each date is
+//  seperated by a space. The date should be formatted like
+//   9/13/2014 where months do not have leading zeroes and
+//   are separated with forward slashes.
+// If no end year is given, only return friday the thirteenths during the start year.
+// function fridayTheThirteenths(start, end) {
+//   let star = new Date(start);
+
+//   return star;
+// }
+// console.log(fridayTheThirteenths("8/13/1999"));
+
+// Write a function that takes an array and counts the number of each unique element present.
+
+// count(['james', 'james', 'john'])
+// #=> { 'james': 2, 'john': 1}
+function count(array) {
+  counter = {};
+  array.forEach(element => {
+    counter[element]? counter[element]++ : counter[element] = 1;
+  });
+  return counter;
 }
-let integer = [2, 4, 0, 100, 4, 11, 2602, 36];
-console.log(findOutlier([2, 4, 0, 100, 4, 11, 2602, 36]));
+console.log(count(["james", "james", "john"]));
