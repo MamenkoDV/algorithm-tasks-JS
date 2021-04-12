@@ -226,21 +226,58 @@
 //   are separated with forward slashes.
 // If no end year is given, only return friday the thirteenths during the start year.
 // function fridayTheThirteenths(start, end) {
-//   let star = new Date(start);
-
-//   return star;
+//   let startDay = new Date(start,0,1);
+// let endDay = new Date(end,0,1);
+//   return [startDay,endDay];
 // }
-// console.log(fridayTheThirteenths("8/13/1999"));
+// console.log(fridayTheThirteenths(1999,2000));
+
+/* For s1 = "aabcc" and s2 = "adcaa", the output should be 3
+ * Strings have 3 common characters - 2 "a"s and 1 "c".
+ */
+function getCommonCharacterCount(s1, s2) {
+	// throw new Error('Not implemented');
+	// throw new Error('Not implemented');
+	let s1counter = {};
+	let s2counter = {};
+
+	[...s1.split("")].forEach((element) => {
+		s1counter[element] ? s1counter[element]++ : (s1counter[element] = 1);
+	});
+	[...s2.split("")].forEach((element) => {
+		s2counter[element] ? s2counter[element]++ : (s2counter[element] = 1);
+	});
+	let counter = 0;
+	let arr1 = Object.entries(s1counter);
+	let arr2 = Object.entries(s2counter);
+	for (let key of Object.keys(s1counter)) {
+		if (s2counter[key]) {
+			let quantity =
+				s2counter[key] >= s1counter[key] ? s1counter[key] : s2counter[key];
+			counter += quantity;
+		}
+	}
+	// for (let key in s1counter) {
+	// 	if (s2counter[key]) {
+	// 		let quantity =
+	// 			s2counter[key] >= s1counter[key] ? s1counter[key] : s2counter[key];
+	// 		counter += quantity;
+	// 	}
+	// }
+	return counter;
+}
+
+console.log(getCommonCharacterCount("aabcc", "adcaa"));
 
 // Write a function that takes an array and counts the number of each unique element present.
 
 // count(['james', 'james', 'john'])
 // #=> { 'james': 2, 'john': 1}
-function count(array) {
-  counter = {};
-  array.forEach(element => {
-    counter[element]? counter[element]++ : counter[element] = 1;
-  });
-  return counter;
-}
-console.log(count(["james", "james", "john"]));
+// function count(array) {
+//   counter = {};
+//   array.forEach(element => {
+//     counter[element]? counter[element]++ : counter[element] = 1;
+//   });
+//   return counter;
+// }
+// console.log(count(["james", "james", "john"]));
