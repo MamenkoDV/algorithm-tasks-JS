@@ -235,42 +235,94 @@
 /* For s1 = "aabcc" and s2 = "adcaa", the output should be 3
  * Strings have 3 common characters - 2 "a"s and 1 "c".
  */
-function getCommonCharacterCount(s1, s2) {
-	// throw new Error('Not implemented');
-	// throw new Error('Not implemented');
-	let s1counter = {};
-	let s2counter = {};
+// function getCommonCharacterCount(s1, s2) {
+// 	// throw new Error('Not implemented');
+// 	// throw new Error('Not implemented');
+// 	let s1counter = {};
+// 	let s2counter = {};
 
-	[...s1.split("")].forEach((element) => {
-		s1counter[element] ? s1counter[element]++ : (s1counter[element] = 1);
-	});
-	[...s2.split("")].forEach((element) => {
-		s2counter[element] ? s2counter[element]++ : (s2counter[element] = 1);
-	});
-	let counter = 0;
-	let arr1 = Object.entries(s1counter);
-	let arr2 = Object.entries(s2counter);
-	for (let key of Object.keys(s1counter)) {
-		if (s2counter[key]) {
-			let quantity =
-				s2counter[key] >= s1counter[key] ? s1counter[key] : s2counter[key];
-			counter += quantity;
-		}
-	}
-	// for (let key in s1counter) {
-	// 	if (s2counter[key]) {
-	// 		let quantity =
-	// 			s2counter[key] >= s1counter[key] ? s1counter[key] : s2counter[key];
-	// 		counter += quantity;
-	// 	}
-	// }
-	return counter;
-}
+// 	[...s1.split("")].forEach((element) => {
+// 		s1counter[element] ? s1counter[element]++ : (s1counter[element] = 1);
+// 	});
+// 	[...s2.split("")].forEach((element) => {
+// 		s2counter[element] ? s2counter[element]++ : (s2counter[element] = 1);
+// 	});
+// 	let counter = 0;
+// 	let arr1 = Object.entries(s1counter);
+// 	let arr2 = Object.entries(s2counter);
+// 	for (let key of Object.keys(s1counter)) {
+// 		if (s2counter[key]) {
+// 			let quantity =
+// 				s2counter[key] >= s1counter[key] ? s1counter[key] : s2counter[key];
+// 			counter += quantity;
+// 		}
+// 	}
+// 	// for (let key in s1counter) {
+// 	// 	if (s2counter[key]) {
+// 	// 		let quantity =
+// 	// 			s2counter[key] >= s1counter[key] ? s1counter[key] : s2counter[key];
+// 	// 		counter += quantity;
+// 	// 	}
+// 	// }
+// 	return counter;
+// }
 
-console.log(getCommonCharacterCount("aabcc", "adcaa"));
+// console.log(getCommonCharacterCount("aabcc", "adcaa"));
+// function deleteDigit( n ) {
+// 	resultArray = n.toString().split('');
+// 	acc= [];
+// 	res = resultArray.map((element,index,arr)=> {
 
+// 		acc = [...arr.slice( )];
+// 		return acc;
+// 	})
+// 	return 	res;
+// }
+// console.log(deleteDigit(432));
+// function sortByHeight(arr) {
+// 	const filtered = arr.filter(element=> element > 0);
+// 	const sorted = filtered.sort((a,b) =>  a-b);
+// 	const result = arr.map((element) => {
+// 	return 	element === -1 ? element : sorted.shift();
+// 	});
+
+// 	return result;
+// }
+// console.log(sortByHeight([-1, 150, 190, 170, -1, -1, 160, 180]));
+
+// function encodeLine( str ) {
+// let result = "";
+// let count = 1;
+
+// for (let index = 0; index < str.length; index++) {
+// 	const element = str[index];
+// 	let nextElement = str[index+1];
+// 	if(element === nextElement) {
+// 		count++;
+// 		continue;
+// 	}
+// 	result+= element;
+
+// 	if(count > 1) {
+// 		result +=count;
+// 		count = 1;
+// 	}
+// }
+// return result;
+// // }
+// console.log(encodeLine('AVVVBBBVVXDHJFFFFDDDDDDHAAAAJJJDDSLSSSDDDD'));
+// console.log(Object.keys({}).length);
 // Write a function that takes an array and counts the number of each unique element present.
+const findIndex = function (array, value, start = 0, end = array.length - 1) {
+	if (start > end) return false;
+	let mid = Math.floor((start + end) / 2);
+	if (array[mid] === value) return mid;
+	if (array[mid] > value) {
+		return findIndex(array, value, start, mid - 1);
+	} else return findIndex(array, value, mid + 1, end);
+};
 
+console.log(findIndex([1, 2, 3, 5, 6, 7, 8, 9, 10], 7));
 // count(['james', 'james', 'john'])
 // #=> { 'james': 2, 'john': 1}
 // function count(array) {
