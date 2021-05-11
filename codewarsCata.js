@@ -313,16 +313,16 @@
 // console.log(encodeLine('AVVVBBBVVXDHJFFFFDDDDDDHAAAAJJJDDSLSSSDDDD'));
 // console.log(Object.keys({}).length);
 // Write a function that takes an array and counts the number of each unique element present.
-const findIndex = function (array, value, start = 0, end = array.length - 1) {
-	if (start > end) return false;
-	let mid = Math.floor((start + end) / 2);
-	if (array[mid] === value) return mid;
-	if (array[mid] > value) {
-		return findIndex(array, value, start, mid - 1);
-	} else return findIndex(array, value, mid + 1, end);
-};
+// const findIndex = function (array, value, start = 0, end = array.length - 1) {
+// 	if (start > end) return false;
+// 	let mid = Math.floor((start + end) / 2);
+// 	if (array[mid] === value) return mid;
+// 	if (array[mid] > value) {
+// 		return findIndex(array, value, start, mid - 1);
+// 	} else return findIndex(array, value, mid + 1, end);
+// };
 
-console.log(findIndex([1, 2, 3, 5, 6, 7, 8, 9, 10], 7));
+// console.log(findIndex([1, 2, 3, 5, 6, 7, 8, 9, 10], 7));
 // count(['james', 'james', 'john'])
 // #=> { 'james': 2, 'john': 1}
 // function count(array) {
@@ -333,3 +333,69 @@ console.log(findIndex([1, 2, 3, 5, 6, 7, 8, 9, 10], 7));
 //   return counter;
 // }
 // console.log(count(["james", "james", "john"]));
+// foreach realization
+// let params = [10, 20, 30];
+
+// params.__proto__.forEach2 = function (callback, thisArg) {
+// 	for (let i = 0; i < this.length; i++) {
+// 		callback.call(thisArg, this[i], i, this);
+// 	}
+// };
+
+// const callback = function (item, index, arr) {
+// 	console.log(item, index, arr, this);
+// };
+
+// params.__proto__.forEach2 = function (callback, thisArg) {
+// 	for (let i = 0; i < this.length; i++) {
+// 		callback.call(thisArg, this[i], i, this);
+// 	}
+// };
+
+// const callback = function (item, i, arr) {
+// 	console.log(item, i, arr, this);
+// };
+// params.forEach2(callback, 999);
+
+let button = document.querySelector(".trigger");
+let p = document.querySelector(".counter");
+
+console.log(button, p);
+function MakeCounter() {
+	let count = 0;
+
+	this.up = function () {
+		return ++count;
+	};
+	this.down = function () {
+		return --count;
+	};
+	this.reset = function () {
+		count = 0;
+		return count;
+	};
+}
+let counter1 = new MakeCounter();
+button.addEventListener("contextmenu", (e) => {
+	e.preventDefault();
+});
+button.addEventListener("mousedown", (e) => {
+	if (+p.innerHTML >= 15) {
+		p.innerHTML = "YOU WON";
+		return;
+	}
+	if (e.button === 0) p.innerHTML = `${counter1.up()}`;
+	else if (e.button === 2) {
+		if (p.innerHTML === "0") {
+			counter1.reset();
+			return;
+		}
+
+		p.innerHTML = `${counter1.down()}`;
+	}
+});
+function myEvent() {
+	p.innerHTML = "0";
+	counter1.reset();
+}
+let timer = setInterval(myEvent, 15000);
