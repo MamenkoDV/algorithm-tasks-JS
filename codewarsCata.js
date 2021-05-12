@@ -355,47 +355,81 @@
 // const callback = function (item, i, arr) {
 // 	console.log(item, i, arr, this);
 // };
-// params.forEach2(callback, 999);
+// let button = document.querySelector(".trigger");
+// let p = document.querySelector(".counter");
 
-let button = document.querySelector(".trigger");
-let p = document.querySelector(".counter");
+// console.log(button, p);
+// function MakeCounter() {
+// 	let count = 0;
 
-console.log(button, p);
-function MakeCounter() {
-	let count = 0;
+// 	this.up = function () {
+// 		return ++count;
+// 	};
+// 	this.down = function () {
+// 		return --count;
+// 	};
+// 	this.reset = function () {
+// 		count = 0;
+// 		return count;
+// 	};
+// }
+// let counter1 = new MakeCounter();
+// button.addEventListener("contextmenu", (e) => {
+// 	e.preventDefault();
+// });
+// button.addEventListener("mousedown", (e) => {
+// 	if (+p.innerHTML >= 15) {
+// 		p.innerHTML = "YOU WON";
+// 		return;
+// 	}
+// 	if (e.button === 0) p.innerHTML = `${counter1.up()}`;
+// 	else if (e.button === 2) {
+// 		if (p.innerHTML === "0") {
+// 			counter1.reset();
+// 			return;
+// 		}
 
-	this.up = function () {
-		return ++count;
-	};
-	this.down = function () {
-		return --count;
-	};
-	this.reset = function () {
-		count = 0;
-		return count;
+// 		p.innerHTML = `${counter1.down()}`;
+// 	}
+// });
+// function myEvent() {
+// 	p.innerHTML = "0";
+// 	counter1.reset();
+// }
+// let timer = setInterval(myEvent, 15000);
+// const multiply = (a, b) => a * b;
+// const withLogging = (originalFunction) => {
+// 	return (...args) => {
+// 		const result = originalFunction(...args);
+// 		console.log(...args, result);
+// 		return result;
+// 	};
+// };
+// const double = (originalFunction) => {
+// 	return function (...args) {
+// 		const result = originalFunction(...args);
+
+// 		return result * 2;
+// 	};
+// };
+// const doubleValue = double(multiply);
+// const multiplyWithLogging = withLogging(multiply);
+// multiplyWithLogging(10, 30);
+// console.log(doubleValue(10, 30));
+
+let input = document.querySelector(".input");
+const ebobo = debounce(onChange, 400);
+function onChange(e) {
+	console.log(e.target.value);
+}
+input.addEventListener("input", ebobo);
+
+function debounce(f, delay) {
+	let timerId;
+	return function (...args) {
+		clearTimeout(timerId);
+		timerId = setTimeout(() => {
+			f(...args);
+		}, delay);
 	};
 }
-let counter1 = new MakeCounter();
-button.addEventListener("contextmenu", (e) => {
-	e.preventDefault();
-});
-button.addEventListener("mousedown", (e) => {
-	if (+p.innerHTML >= 15) {
-		p.innerHTML = "YOU WON";
-		return;
-	}
-	if (e.button === 0) p.innerHTML = `${counter1.up()}`;
-	else if (e.button === 2) {
-		if (p.innerHTML === "0") {
-			counter1.reset();
-			return;
-		}
-
-		p.innerHTML = `${counter1.down()}`;
-	}
-});
-function myEvent() {
-	p.innerHTML = "0";
-	counter1.reset();
-}
-let timer = setInterval(myEvent, 15000);
